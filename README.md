@@ -34,3 +34,19 @@ SAP-RAP-Loan-Approval-System
     ├── Behavior.txt           # Managed Behavior Definitions (BDEF)
     ├── DCL.txt                # Data Control Language / Access Control
     └── Classes.txt            # Behavior Implementation Class (zbp_i_loan_master_v2)
+
+
+
+## 🖼️ Application Walkthrough & UI Preview
+
+### 1. Architecture & Project Structure
+![Architecture](./Architecture.png)
+
+### 2. Fiori Elements List Report View
+![Home Screen](./HOME.png)
+
+### 3. Object Page & Field Inputs
+![Fields](./FIELDS.png)
+
+### 4. Eligibility Check Result
+![Eligibility Check](./Eligibility_Check_Result.png)
