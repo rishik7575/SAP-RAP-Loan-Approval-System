@@ -28,7 +28,7 @@ SAP-RAP-Loan-Approval-System
     ├── ZI_LOAN_MASTER.bdef.abap   # Managed behavior definition (BDEF)
     ├── ZXM_LOAN_MASTER.asdx       # CDS metadata extension (UI annotations)
     └── zbp_i_loan_master_v2.clas.abap # Behavior implementation class
-
+```
 ## 🖼️ Application Walkthrough & UI Preview
 
 ### 1. Architecture & Project Structure
