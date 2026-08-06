@@ -6,6 +6,10 @@ RESTful ABAP Programming Model (RAP) Loan Approval Application
 
 An end-to-end enterprise Loan Approval application developed using the **RESTful ABAP Programming Model (RAP)** on SAP S/4HANA / ABAP Cloud.
 
+# 🏦 SAP RAP Managed Loan Approval System
+
+An end-to-end enterprise Loan Approval application developed using the **RESTful ABAP Programming Model (RAP)** on SAP S/4HANA / ABAP Cloud.
+
 ---
 
 ## 📂 Repository Architecture & Folder Structure
@@ -35,16 +39,3 @@ SAP-RAP-Loan-Approval-System
     ├── DCL.txt                # Data Control Language / Access Control
     └── Classes.txt            # Behavior Implementation Class (zbp_i_loan_master_v2)
 
-
-
-### 1. Architecture & Project Structure
-![Architecture](./OUTPUT_IMAGES/Architecture.png)
-
-### 2. Fiori Elements List Report View
-![Home Screen](./OUTPUT_IMAGES/HOME.png)
-
-### 3. Object Page & Field Inputs
-![Fields](./OUTPUT_IMAGES/FIELDS.png)
-
-### 4. Eligibility Check Result
-![Eligibility Check](./OUTPUT_IMAGES/Eligibility_Check_Result.png)
