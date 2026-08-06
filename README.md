@@ -40,13 +40,13 @@ SAP-RAP-Loan-Approval-System
 ## 🖼️ Application Walkthrough & UI Preview
 
 ### 1. Architecture & Project Structure
-![Architecture](./Architecture.png)
+![Architecture](./OUTPUT_IMAGES/Architecture.png)
 
 ### 2. Fiori Elements List Report View
-![Home Screen](./HOME.png)
+![Home Screen](./OUTPUT_IMAGES/HOME.png)
 
 ### 3. Object Page & Field Inputs
-![Fields](./FIELDS.png)
+![Fields](./OUTPUT_IMAGES/FIELDS.png)
 
 ### 4. Eligibility Check Result
-![Eligibility Check](./Eligibility_Check_Result.png)
+![Eligibility Check](./OUTPUT_IMAGES/Eligibility_Check_Result.png)
