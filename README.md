@@ -37,8 +37,6 @@ SAP-RAP-Loan-Approval-System
 
 
 
-## 🖼️ Application Walkthrough & UI Preview
-
 ### 1. Architecture & Project Structure
 ![Architecture](./OUTPUT_IMAGES/Architecture.png)
 
