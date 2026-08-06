@@ -1,0 +1,80 @@
+                                         ================================================================================
+                                                                   PROJECT TECHNICAL DOCUMENTATION
+                                                                 SAP RAP MANAGED LOAN APPROVAL SYSTEM
+                                         ================================================================================
+
+1. PROJECT OBJECTIVE
+--------------------------------------------------------------------------------
+The objective of this project is to build an end-to-end, enterprise-grade 
+transactional Loan Approval System using the RESTful ABAP Programming Model 
+(RAP) on SAP S/4HANA / ABAP Cloud. 
+
+The application streamlines loan processing by allowing users to enter 
+applicant details, dynamically validate inputs against business constraints, 
+and execute automated eligibility checks that calculate loan outcomes 
+(Approved, Rejected, or Pending Manual Review) in real time.
+
+
+2. TECHNOLOGIES & TOOLS USED
+--------------------------------------------------------------------------------
+• Development Environment: ABAP Development Tools (ADT) in Eclipse
+• Platform: SAP S/4HANA / ABAP Cloud
+• Framework: RESTful ABAP Programming Model (RAP) — Managed Transactional Architecture
+• Data Layer: Core Data Services (CDS Views — Interface & Projection)
+• Business Logic: ABAP Object-Oriented Handler Class (zbp_i_loan_master_v2)
+• Database Table: SAP HANA Custom Database Table (zloan_master)
+• UI & Protocol: SAP Fiori Elements (List Report & Object Page) via OData V4 Service
+• Authorization & Control: Access Control / Data Control Language (DCL) & Draft Handling
+
+
+3. WHAT I DID (IMPLEMENTATION DETAILS)
+--------------------------------------------------------------------------------
+• Data Dictionary Setup:
+  - Designed the primary master database table `zloan_master` for storing applicant 
+    details, income, credit scores, loan amounts, and system audit logs.
+
+• Core Data Services (CDS) Layer:
+  - Created an Interface View (`ZI_LOAN_MASTER`) to map database fields, set 
+    semantic annotations (`@Semantics.user.createdBy`, `@Semantics.systemDateTime.createdAt`), 
+    and establish data types.
+  - Built a Projection View (`ZC_LOAN_MASTER`) to expose transactional capabilities 
+    to the UI consumption layer.
+  - Added Metadata Extensions (`ZXM_LOAN_MASTER`) using `@UI` annotations to define 
+    List Report columns, Object Page field groups, facets, and headers.
+
+• Behavior Definitions (BDEF) & Draft Capabilities:
+  - Defined the transactional behavior (`ZI_LOAN_MASTER.bdef.abap`) supporting standard 
+    CRUD (Create, Read, Update, Delete) operations.
+  - Implemented `with draft` functionality to enable stateless session handling and 
+    auto-save on Fiori Elements UI.
+  - Configured `numbering : managed` on `LoanUUID` for automatic primary key generation (`sysuuid_x16`).
+  - Configured ETag concurrency management using `LastChangedAt`.
+
+• Business Logic Implementation (`zbp_i_loan_master_v2`):
+  - Determinations: Implemented `SetLoanDetails` on modify (`create`) to automatically 
+    assign default status (`NEW`) and initial remarks upon record entry.
+  - Validations (on save):
+    * `ValidateAge`: Restricts applicant age to the range of 21 – 65 years.
+    * `ValidateMobile`: Ensures mobile number entries match exactly 10 numerical digits.
+    * `ValidateSalary`: Confirms salary entered is greater than zero.
+    * `ValidateCIBIL`: Ensures CIBIL credit score falls between 300 and 900.
+  - Custom Actions: Developed `CheckEligibility` to dynamically evaluate applicant 
+    income and CIBIL score, updating the instance status to `APPROVED`, `REJECTED`, 
+    or `PENDING MANUAL REVIEW`.
+
+• Exposure & UI Service:
+  - Created a Service Definition (`ZUI_LOAN_SERVICE.srvd.abap`) exposing projection views.
+  - Published an OData V4 Service Binding (`ZUI_LOAN_SERVICE_O4`) for testing via 
+    SAP Fiori Elements Preview.
+
+
+4. WHAT I LEARNED (KEY TAKEAWAYS)
+--------------------------------------------------------------------------------
+• Mastered the 4-layer RAP Managed Architecture (Database -> Interface CDS -> Projection CDS -> Service Binding).
+• Understood how to handle stateful and draft-enabled transactional applications in ABAP Cloud.
+• Deepened practical knowledge of EML (Entity Manipulation Language) statements (`READ ENTITIES`, `MODIFY ENTITIES`) within ABAP handler classes.
+• Hands-on experience constructing Determinations, Validations, and custom Actions with user message reporting (`REPORTED`, `FAILED`).
+• Learned to write clean CDS metadata annotations to generate responsive Fiori UIs without custom JavaScript/UI5 code.
+• Gained proficiency in using Git/GitHub for structured ABAP project code showcase and documentation.
+
+================================================================================
